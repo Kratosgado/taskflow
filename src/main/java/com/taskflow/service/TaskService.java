@@ -25,11 +25,6 @@ public class TaskService {
 
     /**
      * Creates a new task with the given title and description.
-     *
-     * @param title       the task title (required)
-     * @param description the task description (optional)
-     * @return the created task
-     * @throws IllegalArgumentException if title is null or empty
      */
     public Task addTask(String title, String description) {
         Task task = new Task(nextId++, title, description);
@@ -39,8 +34,6 @@ public class TaskService {
 
     /**
      * Returns an unmodifiable list of all tasks.
-     *
-     * @return list of all tasks
      */
     public List<Task> getAllTasks() {
         return Collections.unmodifiableList(tasks);
@@ -48,9 +41,6 @@ public class TaskService {
 
     /**
      * Finds a task by its ID.
-     *
-     * @param id the task ID
-     * @return Optional containing the task if found
      */
     public Optional<Task> getTaskById(int id) {
         return tasks.stream()
@@ -60,11 +50,6 @@ public class TaskService {
 
     /**
      * Marks a task as complete (DONE).
-     *
-     * @param id the task ID
-     * @return the updated task
-     * @throws IllegalArgumentException if the task is not found
-     * @throws IllegalStateException    if the task is already completed
      */
     public Task completeTask(int id) {
         Task task = getTaskById(id)
@@ -79,9 +64,19 @@ public class TaskService {
     }
 
     /**
-     * Returns the total number of tasks.
+     * Filters tasks by their status.
      *
-     * @return task count
+     * @param status the status to filter by
+     * @return list of tasks matching the given status
+     */
+    public List<Task> getTasksByStatus(TaskStatus status) {
+        return tasks.stream()
+                .filter(task -> task.getStatus() == status)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Returns the total number of tasks.
      */
     public int getTaskCount() {
         return tasks.size();

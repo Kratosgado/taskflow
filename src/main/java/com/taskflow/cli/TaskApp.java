@@ -1,6 +1,7 @@
 package com.taskflow.cli;
 
 import com.taskflow.model.Task;
+import com.taskflow.model.TaskStatus;
 import com.taskflow.service.TaskService;
 
 import java.util.List;
@@ -53,6 +54,7 @@ public class TaskApp {
                     case "add" -> handleAdd(parts);
                     case "list" -> handleList();
                     case "complete" -> handleComplete(parts);
+                    case "filter" -> handleFilter(parts);
                     case "help" -> printHelp();
                     case "exit", "quit" -> {
                         System.out.println("Goodbye!");
@@ -108,6 +110,28 @@ public class TaskApp {
         }
     }
 
+    private void handleFilter(String[] parts) {
+        if (parts.length < 2) {
+            System.out.println("Usage: filter <status> (TODO, IN_PROGRESS, DONE)");
+            return;
+        }
+
+        try {
+            TaskStatus status = TaskStatus.valueOf(parts[1].toUpperCase());
+            List<Task> filtered = taskService.getTasksByStatus(status);
+
+            if (filtered.isEmpty()) {
+                System.out.println("No tasks found with status: " + status);
+                return;
+            }
+
+            printTaskTable(filtered);
+            System.out.printf("Found: %d task(s) with status %s%n", filtered.size(), status);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: Invalid status. Use: TODO, IN_PROGRESS, or DONE");
+        }
+    }
+
     private void printTask(Task task) {
         System.out.println("  " + task);
     }
@@ -145,6 +169,7 @@ public class TaskApp {
         System.out.println("  add <title> [description]  - Create a new task");
         System.out.println("  list                       - List all tasks");
         System.out.println("  complete <id>              - Mark a task as complete");
+        System.out.println("  filter <status>            - Filter tasks by status (TODO, IN_PROGRESS, DONE)");
         System.out.println("  help                       - Show this help message");
         System.out.println("  exit                       - Exit the application");
     }
