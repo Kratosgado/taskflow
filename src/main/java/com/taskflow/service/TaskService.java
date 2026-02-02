@@ -65,14 +65,50 @@ public class TaskService {
 
     /**
      * Filters tasks by their status.
-     *
-     * @param status the status to filter by
-     * @return list of tasks matching the given status
      */
     public List<Task> getTasksByStatus(TaskStatus status) {
         return tasks.stream()
                 .filter(task -> task.getStatus() == status)
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * Deletes a task by its ID.
+     *
+     * @param id the task ID
+     * @return the deleted task
+     * @throws IllegalArgumentException if the task is not found
+     */
+    public Task deleteTask(int id) {
+        Task task = getTaskById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Task not found with ID: " + id));
+
+        tasks.remove(task);
+        return task;
+    }
+
+    /**
+     * Updates a task's status to IN_PROGRESS.
+     *
+     * @param id the task ID
+     * @return the updated task
+     * @throws IllegalArgumentException if the task is not found
+     * @throws IllegalStateException    if the status transition is invalid
+     */
+    public Task startTask(int id) {
+        Task task = getTaskById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Task not found with ID: " + id));
+
+        if (task.getStatus() == TaskStatus.DONE) {
+            throw new IllegalStateException("Cannot move a completed task back to IN_PROGRESS. Task: " + task.getTitle());
+        }
+
+        if (task.getStatus() == TaskStatus.IN_PROGRESS) {
+            throw new IllegalStateException("Task is already IN_PROGRESS: " + task.getTitle());
+        }
+
+        task.setStatus(TaskStatus.IN_PROGRESS);
+        return task;
     }
 
     /**

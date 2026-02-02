@@ -55,6 +55,8 @@ public class TaskApp {
                     case "list" -> handleList();
                     case "complete" -> handleComplete(parts);
                     case "filter" -> handleFilter(parts);
+                    case "delete" -> handleDelete(parts);
+                    case "progress" -> handleProgress(parts);
                     case "help" -> printHelp();
                     case "exit", "quit" -> {
                         System.out.println("Goodbye!");
@@ -132,6 +134,46 @@ public class TaskApp {
         }
     }
 
+    private void handleDelete(String[] parts) {
+        if (parts.length < 2) {
+            System.out.println("Usage: delete <id>");
+            return;
+        }
+
+        try {
+            int id = Integer.parseInt(parts[1]);
+
+            System.out.printf("Are you sure you want to delete task %d? (y/n): ", id);
+            String confirm = scanner.nextLine().trim().toLowerCase();
+
+            if ("y".equals(confirm) || "yes".equals(confirm)) {
+                Task task = taskService.deleteTask(id);
+                System.out.println("Task deleted successfully!");
+                printTask(task);
+            } else {
+                System.out.println("Deletion cancelled.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Invalid task ID. Please provide a number.");
+        }
+    }
+
+    private void handleProgress(String[] parts) {
+        if (parts.length < 2) {
+            System.out.println("Usage: progress <id>");
+            return;
+        }
+
+        try {
+            int id = Integer.parseInt(parts[1]);
+            Task task = taskService.startTask(id);
+            System.out.println("Task set to IN_PROGRESS!");
+            printTask(task);
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Invalid task ID. Please provide a number.");
+        }
+    }
+
     private void printTask(Task task) {
         System.out.println("  " + task);
     }
@@ -170,6 +212,8 @@ public class TaskApp {
         System.out.println("  list                       - List all tasks");
         System.out.println("  complete <id>              - Mark a task as complete");
         System.out.println("  filter <status>            - Filter tasks by status (TODO, IN_PROGRESS, DONE)");
+        System.out.println("  progress <id>              - Set task to IN_PROGRESS");
+        System.out.println("  delete <id>                - Delete a task");
         System.out.println("  help                       - Show this help message");
         System.out.println("  exit                       - Exit the application");
     }
