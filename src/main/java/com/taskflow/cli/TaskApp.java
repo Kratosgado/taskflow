@@ -2,6 +2,7 @@ package com.taskflow.cli;
 
 import com.taskflow.model.Task;
 import com.taskflow.model.TaskStatus;
+import com.taskflow.repository.JsonTaskRepository;
 import com.taskflow.service.TaskService;
 
 import java.util.List;
@@ -13,11 +14,14 @@ import java.util.Scanner;
  */
 public class TaskApp {
 
+    private static final String DATA_FILE = "tasks.json";
+
     private final TaskService taskService;
     private final Scanner scanner;
 
     public TaskApp() {
-        this.taskService = new TaskService();
+        JsonTaskRepository repository = new JsonTaskRepository(DATA_FILE);
+        this.taskService = new TaskService(repository);
         this.scanner = new Scanner(System.in);
     }
 

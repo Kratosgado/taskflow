@@ -2,6 +2,7 @@ package com.taskflow.service;
 
 import com.taskflow.model.Task;
 import com.taskflow.model.TaskStatus;
+import com.taskflow.repository.TaskRepository;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,11 +17,22 @@ import java.util.stream.Collectors;
 public class TaskService {
 
     private final List<Task> tasks;
+    private final TaskRepository repository;
     private int nextId;
 
     public TaskService() {
         this.tasks = new ArrayList<>();
+        this.repository = null;
         this.nextId = 1;
+    }
+
+    public TaskService(TaskRepository repository) {
+        this.repository = repository;
+        this.tasks = new ArrayList<>(repository.loadAll());
+        this.nextId = tasks.stream()
+                .mapToInt(Task::getId)
+                .max()
+                .orElse(0) + 1;
     }
 
     /**
@@ -29,6 +41,7 @@ public class TaskService {
     public Task addTask(String title, String description) {
         Task task = new Task(nextId++, title, description);
         tasks.add(task);
+        persist();
         return task;
     }
 
@@ -60,6 +73,7 @@ public class TaskService {
         }
 
         task.setStatus(TaskStatus.DONE);
+        persist();
         return task;
     }
 
@@ -74,26 +88,18 @@ public class TaskService {
 
     /**
      * Deletes a task by its ID.
-     *
-     * @param id the task ID
-     * @return the deleted task
-     * @throws IllegalArgumentException if the task is not found
      */
     public Task deleteTask(int id) {
         Task task = getTaskById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Task not found with ID: " + id));
 
         tasks.remove(task);
+        persist();
         return task;
     }
 
     /**
      * Updates a task's status to IN_PROGRESS.
-     *
-     * @param id the task ID
-     * @return the updated task
-     * @throws IllegalArgumentException if the task is not found
-     * @throws IllegalStateException    if the status transition is invalid
      */
     public Task startTask(int id) {
         Task task = getTaskById(id)
@@ -108,6 +114,7 @@ public class TaskService {
         }
 
         task.setStatus(TaskStatus.IN_PROGRESS);
+        persist();
         return task;
     }
 
@@ -116,5 +123,14 @@ public class TaskService {
      */
     public int getTaskCount() {
         return tasks.size();
+    }
+
+    /**
+     * Persists tasks to the repository if available.
+     */
+    private void persist() {
+        if (repository != null) {
+            repository.saveAll(tasks);
+        }
     }
 }
