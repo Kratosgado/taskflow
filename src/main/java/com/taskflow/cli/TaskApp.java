@@ -4,6 +4,8 @@ import com.taskflow.model.Task;
 import com.taskflow.model.TaskStatus;
 import com.taskflow.repository.JsonTaskRepository;
 import com.taskflow.service.TaskService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Scanner;
@@ -14,6 +16,7 @@ import java.util.Scanner;
  */
 public class TaskApp {
 
+    private static final Logger logger = LoggerFactory.getLogger(TaskApp.class);
     private static final String DATA_FILE = "tasks.json";
 
     private final TaskService taskService;
@@ -23,6 +26,7 @@ public class TaskApp {
         JsonTaskRepository repository = new JsonTaskRepository(DATA_FILE);
         this.taskService = new TaskService(repository);
         this.scanner = new Scanner(System.in);
+        logger.info("TaskApp started with persistent storage");
     }
 
     public TaskApp(TaskService taskService, Scanner scanner) {
@@ -64,12 +68,14 @@ public class TaskApp {
                     case "help" -> printHelp();
                     case "exit", "quit" -> {
                         System.out.println("Goodbye!");
+                        logger.info("Application exiting");
                         running = false;
                     }
                     default -> System.out.println("Unknown command: " + command + ". Type 'help' for available commands.");
                 }
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
+                logger.error("Command '{}' failed: {}", command, e.getMessage());
             }
         }
     }

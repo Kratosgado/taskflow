@@ -6,6 +6,9 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.taskflow.model.Task;
+import com.taskflow.model.TaskStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,6 +25,8 @@ import java.util.List;
  */
 public class JsonTaskRepository implements TaskRepository {
 
+    private static final Logger logger = LoggerFactory.getLogger(JsonTaskRepository.class);
+
     private final Path filePath;
     private final Gson gson;
 
@@ -31,6 +36,7 @@ public class JsonTaskRepository implements TaskRepository {
                 .setPrettyPrinting()
                 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
                 .create();
+        logger.info("JsonTaskRepository initialized with file: {}", filePath);
     }
 
     @Override
@@ -38,7 +44,9 @@ public class JsonTaskRepository implements TaskRepository {
         try {
             String json = gson.toJson(tasks.toArray(new Task[0]));
             Files.writeString(filePath, json);
+            logger.info("Saved {} tasks to {}", tasks.size(), filePath);
         } catch (IOException e) {
+            logger.error("Failed to save tasks to {}: {}", filePath, e.getMessage());
             throw new RuntimeException("Failed to save tasks: " + e.getMessage(), e);
         }
     }
@@ -46,21 +54,25 @@ public class JsonTaskRepository implements TaskRepository {
     @Override
     public List<Task> loadAll() {
         if (!Files.exists(filePath)) {
+            logger.info("No existing task file found at {}, starting fresh", filePath);
             return new ArrayList<>();
         }
 
         try {
             String json = Files.readString(filePath);
             if (json.trim().isEmpty()) {
+                logger.info("Task file is empty, starting fresh");
                 return new ArrayList<>();
             }
 
             Task[] loaded = gson.fromJson(json, Task[].class);
+            logger.info("Loaded {} tasks from {}", loaded.length, filePath);
             return new ArrayList<>(Arrays.asList(loaded));
         } catch (IOException e) {
+            logger.error("Failed to read tasks from {}: {}", filePath, e.getMessage());
             return new ArrayList<>();
         } catch (Exception e) {
-            System.err.println("Warning: Failed to parse tasks file, starting fresh.");
+            logger.error("Failed to parse tasks file {}: {}", filePath, e.getMessage());
             return new ArrayList<>();
         }
     }
