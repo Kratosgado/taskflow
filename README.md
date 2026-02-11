@@ -2,6 +2,19 @@
 
 A lightweight, command-line task management application built with Java and Maven.
 
+<!--toc:start-->
+
+- [TaskFlow - Minimal Task Management System](#taskflow-minimal-task-management-system)
+  - [Product Vision](#product-vision)
+  - [Features](#features)
+  - [Prerequisites](#prerequisites)
+  - [Build & Run](#build-run)
+  - [Usage](#usage)
+  - [Project Structure](#project-structure)
+  <!--toc:end-->
+
+![Test Results](./docs/test_result.png)
+
 ## Product Vision
 
 TaskFlow allows individuals to efficiently create, organize, track, and manage their daily tasks from the terminal.

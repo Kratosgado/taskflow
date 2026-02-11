@@ -1,11 +1,26 @@
 # Sprint Plans
 
+<!--toc:start-->
+
+- [Sprint Plans](#sprint-plans)
+  - [Sprint 0: Planning (Dec 31, 2025 - Jan 13, 2026)](#sprint-0-planning-dec-31-2025-jan-13-2026)
+    - [Sprint Goal](#sprint-goal)
+    - [Deliverables](#deliverables)
+  - [Sprint 1: First Increment (Jan 14 - Jan 27, 2026)](#sprint-1-first-increment-jan-14-jan-27-2026)
+    - [Sprint Goal](#sprint-goal-1)
+    - [Selected Stories (7 story points)](#selected-stories-7-story-points)
+    - [Sprint Backlog Tasks](#sprint-backlog-tasks)
+  - [Sprint 2: Second Increment (Jan 28 - Feb 10, 2026)](#sprint-2-second-increment-jan-28-feb-10-2026) - [Sprint Goal](#sprint-goal-2) - [Selected Stories (12 story points)](#selected-stories-12-story-points) - [Sprint Backlog Tasks](#sprint-backlog-tasks-1)
+  <!--toc:end-->
+
 ## Sprint 0: Planning (Dec 31, 2025 - Jan 13, 2026)
 
 ### Sprint Goal
+
 Establish the project foundation, define the product vision, create and refine the product backlog, and set up the development environment.
 
 ### Deliverables
+
 - Product Vision document
 - Product Backlog with 7 user stories, acceptance criteria, and story point estimates
 - Definition of Done
@@ -18,16 +33,19 @@ Establish the project foundation, define the product vision, create and refine t
 ## Sprint 1: First Increment (Jan 14 - Jan 27, 2026)
 
 ### Sprint Goal
+
 Deliver the core task management functionality (create, list, complete tasks) and establish the CI/CD pipeline.
 
 ### Selected Stories (7 story points)
-| Story | Points | Priority |
-|-------|--------|----------|
-| US-1: Create a New Task | 3 | High |
-| US-2: List All Tasks | 2 | High |
-| US-3: Mark Task as Complete | 2 | High |
+
+| Story                       | Points | Priority |
+| --------------------------- | ------ | -------- |
+| US-1: Create a New Task     | 3      | High     |
+| US-2: List All Tasks        | 2      | High     |
+| US-3: Mark Task as Complete | 2      | High     |
 
 ### Sprint Backlog Tasks
+
 1. **US-1: Create a New Task**
    - Create Task model class with fields (id, title, description, status, createdAt)
    - Create TaskStatus enum (TODO, IN_PROGRESS, DONE)
@@ -57,17 +75,20 @@ Deliver the core task management functionality (create, list, complete tasks) an
 ## Sprint 2: Second Increment (Jan 28 - Feb 10, 2026)
 
 ### Sprint Goal
+
 Extend task management with filtering, deletion, status updates, and persistent storage. Improve test coverage and add logging.
 
 ### Selected Stories (12 story points)
-| Story | Points | Priority |
-|-------|--------|----------|
-| US-4: Filter Tasks by Status | 3 | Medium |
-| US-5: Delete a Task | 2 | Medium |
-| US-6: Update Task Status | 2 | Medium |
-| US-7: Persistent Storage | 5 | Low |
+
+| Story                        | Points | Priority |
+| ---------------------------- | ------ | -------- |
+| US-4: Filter Tasks by Status | 3      | Medium   |
+| US-5: Delete a Task          | 2      | Medium   |
+| US-6: Update Task Status     | 2      | Medium   |
+| US-7: Persistent Storage     | 5      | Low      |
 
 ### Sprint Backlog Tasks
+
 1. **US-4: Filter Tasks by Status**
    - Implement TaskService.getTasksByStatus(status) method
    - Add CLI command for filtering

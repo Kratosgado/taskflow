@@ -1,5 +1,14 @@
 # Sprint 1 Retrospective
 
+<!--toc:start-->
+
+- [Sprint 1 Retrospective](#sprint-1-retrospective)
+  - [What Went Well](#what-went-well)
+  - [What Didn't Go Well](#what-didnt-go-well)
+  - [Action Items for Sprint 2](#action-items-for-sprint-2)
+  - [Key Takeaway](#key-takeaway)
+  <!--toc:end-->
+
 **Sprint:** 1
 **Duration:** Jan 14 - Jan 27, 2026
 
@@ -27,12 +36,12 @@
 
 ## Action Items for Sprint 2
 
-| # | Improvement | Priority | Action |
-|---|-------------|----------|--------|
-| 1 | **Add SLF4J logging** | High | Integrate SLF4J with simple logger backend. Add logging at INFO level for operations and ERROR level for failures throughout TaskService and TaskApp. |
-| 2 | **Improve test coverage** | High | Add integration tests that test the full workflow. Add edge case tests for the new Sprint 2 features. Aim for testing both success and error paths. |
-| 3 | Implement persistence | Medium | Add JSON-based file storage (US-7) so tasks survive across sessions. |
-| 4 | Better CLI input handling | Low | Improve command parsing to handle quoted multi-word strings better. |
+| #   | Improvement               | Priority | Action                                                                                                                                                |
+| --- | ------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | **Add SLF4J logging**     | High     | Integrate SLF4J with simple logger backend. Add logging at INFO level for operations and ERROR level for failures throughout TaskService and TaskApp. |
+| 2   | **Improve test coverage** | High     | Add integration tests that test the full workflow. Add edge case tests for the new Sprint 2 features. Aim for testing both success and error paths.   |
+| 3   | Implement persistence     | Medium   | Add JSON-based file storage (US-7) so tasks survive across sessions.                                                                                  |
+| 4   | Better CLI input handling | Low      | Improve command parsing to handle quoted multi-word strings better.                                                                                   |
 
 ## Key Takeaway
 

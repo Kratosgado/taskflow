@@ -1,5 +1,19 @@
 # Sprint 1 Review
 
+<!--toc:start-->
+
+- [Sprint 1 Review](#sprint-1-review)
+  - [Sprint Summary](#sprint-summary)
+  - [Completed Stories](#completed-stories)
+    - [US-1: Create a New Task (3 points) - DONE](#us-1-create-a-new-task-3-points-done)
+    - [US-2: List All Tasks (2 points) - DONE](#us-2-list-all-tasks-2-points-done)
+    - [US-3: Mark Task as Complete (2 points) - DONE](#us-3-mark-task-as-complete-2-points-done)
+  - [DevOps Pipeline](#devops-pipeline)
+  - [Test Results](#test-results)
+  - [Velocity](#velocity)
+  - [Key Metrics](#key-metrics)
+  <!--toc:end-->
+
 **Sprint:** 1
 **Duration:** Jan 14 - Jan 27, 2026
 **Sprint Goal:** Deliver the core task management functionality (create, list, complete tasks) and establish the CI/CD pipeline.
@@ -13,7 +27,9 @@ Sprint 1 was successfully completed. All three planned user stories were deliver
 ## Completed Stories
 
 ### US-1: Create a New Task (3 points) - DONE
+
 **Acceptance Criteria Status:**
+
 - [x] User can create a task by providing a title (required) and description (optional)
 - [x] Each task is automatically assigned a unique ID
 - [x] Each task is assigned a default status of "TODO" upon creation
@@ -22,6 +38,7 @@ Sprint 1 was successfully completed. All three planned user stories were deliver
 - [x] Creating a task with an empty title is rejected with an error message
 
 **Demo:**
+
 ```
 taskflow> add "Buy groceries" "Milk, eggs, bread"
 Task created successfully!
@@ -29,7 +46,9 @@ Task created successfully!
 ```
 
 ### US-2: List All Tasks (2 points) - DONE
+
 **Acceptance Criteria Status:**
+
 - [x] User can list all tasks in the system
 - [x] Each task displays its ID, title, status, and creation date
 - [x] Tasks are displayed in a formatted, readable table
@@ -37,6 +56,7 @@ Task created successfully!
 - [x] The list shows the total count of tasks
 
 **Demo:**
+
 ```
 taskflow> list
 ──────────────────────────────────────────────────────────────────────
@@ -50,7 +70,9 @@ Total: 3 task(s)
 ```
 
 ### US-3: Mark Task as Complete (2 points) - DONE
+
 **Acceptance Criteria Status:**
+
 - [x] User can mark a task as complete by specifying its ID
 - [x] The task status changes from "TODO" or "IN_PROGRESS" to "DONE"
 - [x] The system displays a confirmation message with the updated task
@@ -58,6 +80,7 @@ Total: 3 task(s)
 - [x] Attempting to complete an already-completed task shows a warning
 
 **Demo:**
+
 ```
 taskflow> complete 1
 Task marked as complete!
@@ -92,10 +115,10 @@ Error: Task is already completed: Buy groceries
 
 ## Key Metrics
 
-| Metric | Value |
-|--------|-------|
-| Stories completed | 3/3 |
-| Story points delivered | 7/7 |
-| Tests written | 27 |
-| Tests passing | 27 |
-| Build status | GREEN |
+| Metric                 | Value |
+| ---------------------- | ----- |
+| Stories completed      | 3/3   |
+| Story points delivered | 7/7   |
+| Tests written          | 27    |
+| Tests passing          | 27    |
+| Build status           | GREEN |

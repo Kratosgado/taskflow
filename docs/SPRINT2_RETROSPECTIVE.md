@@ -1,5 +1,15 @@
 # Sprint 2 Retrospective
 
+<!--toc:start-->
+
+- [Sprint 2 Retrospective](#sprint-2-retrospective)
+  - [What Went Well](#what-went-well)
+  - [What Didn't Go Well](#what-didnt-go-well)
+  - [What Would I Do Differently](#what-would-i-do-differently)
+  - [Key Takeaway](#key-takeaway)
+  - [Process Metrics Comparison](#process-metrics-comparison)
+  <!--toc:end-->
+
 **Sprint:** 2
 **Duration:** Jan 28 - Feb 10, 2026
 
@@ -37,11 +47,11 @@ The most valuable learning from this project is the power of the retrospective p
 
 ## Process Metrics Comparison
 
-| Metric | Sprint 1 | Sprint 2 | Improvement |
-|--------|----------|----------|-------------|
-| Velocity | 7 pts | 12 pts | +71% |
-| Tests | 27 | 46 | +70% |
-| Logging | None | SLF4J | Added |
-| Persistence | In-memory | JSON file | Added |
-| Stories delivered | 3 | 4 | +33% |
-| Retrospective items addressed | N/A | 2/2 (100%) | - |
+| Metric                        | Sprint 1  | Sprint 2   | Improvement |
+| ----------------------------- | --------- | ---------- | ----------- |
+| Velocity                      | 7 pts     | 12 pts     | +71%        |
+| Tests                         | 27        | 46         | +70%        |
+| Logging                       | None      | SLF4J      | Added       |
+| Persistence                   | In-memory | JSON file  | Added       |
+| Stories delivered             | 3         | 4          | +33%        |
+| Retrospective items addressed | N/A       | 2/2 (100%) | -           |
