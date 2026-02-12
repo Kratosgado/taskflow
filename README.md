@@ -218,7 +218,3 @@ mvn clean package
 ## Contributing
 
 When contributing to TaskFlow, please follow the [Definition of Done](./docs/DEFINITION_OF_DONE.md) standards and refer to the [Product Backlog](./docs/PRODUCT_BACKLOG.md) for upcoming work.
-
-## License
-
-[Add your license information here]

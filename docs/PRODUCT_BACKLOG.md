@@ -24,12 +24,12 @@
 
 **Acceptance Criteria:**
 
-- [ ] User can create a task by providing a title (required) and description (optional)
-- [ ] Each task is automatically assigned a unique ID
-- [ ] Each task is assigned a default status of "TODO" upon creation
-- [ ] Each task records the creation timestamp
-- [ ] The system confirms successful task creation by displaying the task details
-- [ ] Creating a task with an empty title is rejected with an error message
+- [x] User can create a task by providing a title (required) and description (optional)
+- [x] Each task is automatically assigned a unique ID
+- [x] Each task is assigned a default status of "TODO" upon creation
+- [x] Each task records the creation timestamp
+- [x] The system confirms successful task creation by displaying the task details
+- [x] Creating a task with an empty title is rejected with an error message
 
 ---
 
@@ -41,11 +41,11 @@
 
 **Acceptance Criteria:**
 
-- [ ] User can list all tasks in the system
-- [ ] Each task displays its ID, title, status, and creation date
-- [ ] Tasks are displayed in a formatted, readable table
-- [ ] If no tasks exist, a friendly message is shown ("No tasks found.")
-- [ ] The list shows the total count of tasks
+- [x] User can list all tasks in the system
+- [x] Each task displays its ID, title, status, and creation date
+- [x] Tasks are displayed in a formatted, readable table
+- [x] If no tasks exist, a friendly message is shown ("No tasks found.")
+- [x] The list shows the total count of tasks
 
 ---
 
@@ -57,11 +57,11 @@
 
 **Acceptance Criteria:**
 
-- [ ] User can mark a task as complete by specifying its ID
-- [ ] The task status changes from "TODO" or "IN_PROGRESS" to "DONE"
-- [ ] The system displays a confirmation message with the updated task
-- [ ] Attempting to complete a non-existent task shows an error message
-- [ ] Attempting to complete an already-completed task shows a warning
+- [x] User can mark a task as complete by specifying its ID
+- [x] The task status changes from "TODO" or "IN_PROGRESS" to "DONE"
+- [x] The system displays a confirmation message with the updated task
+- [x] Attempting to complete a non-existent task shows an error message
+- [x] Attempting to complete an already-completed task shows a warning
 
 ---
 
@@ -73,11 +73,11 @@
 
 **Acceptance Criteria:**
 
-- [ ] User can filter tasks by status: TODO, IN_PROGRESS, or DONE
-- [ ] Only tasks matching the specified status are displayed
-- [ ] If no tasks match the filter, a message is shown ("No tasks found with status: X")
-- [ ] The filter is case-insensitive
-- [ ] The filtered list displays the count of matching tasks
+- [x] User can filter tasks by status: TODO, IN_PROGRESS, or DONE
+- [x] Only tasks matching the specified status are displayed
+- [x] If no tasks match the filter, a message is shown ("No tasks found with status: X")
+- [x] The filter is case-insensitive
+- [x] The filtered list displays the count of matching tasks
 
 ---
 
@@ -89,11 +89,11 @@
 
 **Acceptance Criteria:**
 
-- [ ] User can delete a task by specifying its ID
-- [ ] The system asks for confirmation before deleting
-- [ ] The system displays a confirmation message after successful deletion
-- [ ] Attempting to delete a non-existent task shows an error message
-- [ ] Deleted tasks are permanently removed from the system
+- [x] User can delete a task by specifying its ID
+- [x] The system asks for confirmation before deleting
+- [x] The system displays a confirmation message after successful deletion
+- [x] Attempting to delete a non-existent task shows an error message
+- [x] Deleted tasks are permanently removed from the system
 
 ---
 
@@ -105,10 +105,10 @@
 
 **Acceptance Criteria:**
 
-- [ ] User can change a task's status to IN_PROGRESS
-- [ ] The system displays the updated task details
-- [ ] Attempting to update a non-existent task shows an error message
-- [ ] Status transitions are validated (cannot move DONE back to TODO directly)
+- [x] User can change a task's status to IN_PROGRESS
+- [x] The system displays the updated task details
+- [x] Attempting to update a non-existent task shows an error message
+- [x] Status transitions are validated (cannot move DONE back to TODO directly)
 
 ---
 
@@ -120,10 +120,10 @@
 
 **Acceptance Criteria:**
 
-- [ ] Tasks are automatically saved to a JSON file after every operation
-- [ ] Tasks are loaded from the file when the application starts
-- [ ] If the file doesn't exist, the application starts with an empty task list
-- [ ] File corruption is handled gracefully with an error message
+- [x] Tasks are automatically saved to a JSON file after every operation
+- [x] Tasks are loaded from the file when the application starts
+- [x] If the file doesn't exist, the application starts with an empty task list
+- [x] File corruption is handled gracefully with an error message
 
 ---
 
